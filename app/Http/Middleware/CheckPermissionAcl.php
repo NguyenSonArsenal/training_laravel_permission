@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,8 @@ class CheckPermissionAcl
             ->select('roles.*')
             ->where('users.id', auth()->id())
             ->get()->pluck('id')->toArray();
+
+//        $listRoleOfUser = User::find(auth()->id())->roles()->select('roles.id')->pluck('id')->toArray(); // C2
 
         // // 2. Lấy tất cả quyền tương ứng với các role trên
         $listRoleOfUser = DB::table('roles')
