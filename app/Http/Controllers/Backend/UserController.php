@@ -75,8 +75,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         try {
-            $myRoles = array_column($user->roles->toArray(), 'id');
-            $user->roles()->detach($myRoles);
+            $user->roles()->detach();
             $user->delete(); // returns true/false
             DB::commit();
             return redirect()->back()->with('notification_success', 'Thành công');

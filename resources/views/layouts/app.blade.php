@@ -48,7 +48,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('role.index') }}">
                                     Module Role
                                 </a>
                             </li>

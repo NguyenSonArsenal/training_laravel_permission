@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32-0ubuntu0.22.04.2)
  File Encoding         : 65001
 
- Date: 13/04/2023 15:00:46
+ Date: 13/04/2023 17:54:24
 */
 
 SET NAMES utf8mb4;
@@ -51,7 +51,7 @@ CREATE TABLE `permission_role` (
   PRIMARY KEY (`id`),
   KEY `permission_role_permission_id_index` (`permission_id`),
   KEY `permission_role_role_id_index` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of permission_role
@@ -126,13 +126,12 @@ CREATE TABLE `role_user` (
   PRIMARY KEY (`id`),
   KEY `role_user_role_id_index` (`role_id`),
   KEY `role_user_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of role_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES (13, 1, 2, '2023-04-13 14:50:49', '2023-04-13 14:50:49');
 INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES (15, 1, 1, '2023-04-13 14:59:14', '2023-04-13 14:59:14');
 COMMIT;
 
@@ -149,7 +148,7 @@ CREATE TABLE `roles` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of roles
@@ -158,6 +157,9 @@ BEGIN;
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (1, 'admin', 'Admin', '2023-04-13 14:30:22', '2023-04-13 14:30:22', NULL);
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (2, 'content', 'Content', '2023-04-13 14:30:28', '2023-04-13 14:30:28', NULL);
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (3, 'writer', 'Người viết bài', '2023-04-13 14:30:34', '2023-04-13 14:30:34', NULL);
+INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (5, 'teacher', 'GV', '2023-04-13 10:25:45', '2023-04-13 17:25:56', NULL);
+INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (6, 'support', 'Ho tro vien', '2023-04-13 10:42:57', '2023-04-13 10:49:47', '2023-04-13 10:49:47');
+INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`, `deleted_at`) VALUES (9, 'support1', 'support1', '2023-04-13 10:52:11', '2023-04-13 10:52:11', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -182,8 +184,8 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES (1, 'admin', 'admin@gmail.com', NULL, '$2y$10$Zh1cZ2eNfkVSVj/B3Fv4XORG2jXbtwH7AZB9Hpax/1N93HvCziZSa', NULL, '2023-04-13 07:27:34', '2023-04-13 07:27:34', NULL);
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES (2, 'mot', 'mot@gmail.com', NULL, '$2y$10$GF8QrEZNgyD4GEEKU31RLOH.WX6Fh3784Smpdrrc4TnBEKXVye8sO', NULL, '2023-04-13 07:32:52', '2023-04-13 07:50:49', NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES (1, 'admin', 'admin@gmail.com', NULL, '$2y$10$Zh1cZ2eNfkVSVj/B3Fv4XORG2jXbtwH7AZB9Hpax/1N93HvCziZSa', 'k2IcVBEgClNo40Zu9493nEvwo5y4LR89PAYrxzMVWA4AcLrdbzyGLOl7a3ck', '2023-04-13 07:27:34', '2023-04-13 17:03:48', NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES (2, 'mot', 'mot@gmail.com', NULL, '$2y$10$GF8QrEZNgyD4GEEKU31RLOH.WX6Fh3784Smpdrrc4TnBEKXVye8sO', NULL, '2023-04-13 07:32:52', '2023-04-13 10:07:20', '2023-04-13 10:07:20');
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES (3, 'hai', 'hai@gmail.com', NULL, '$2y$10$yvvw5SX0BTvR5/mujchkUebqkiQWY5SyY/v03KCxUL7MJuxloTFDC', NULL, '2023-04-13 07:34:52', '2023-04-13 07:59:43', '2023-04-13 07:59:43');
 COMMIT;
 
