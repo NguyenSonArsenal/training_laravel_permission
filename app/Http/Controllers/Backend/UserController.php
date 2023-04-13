@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkAcl:user-list')->only('index');
+        $this->middleware('checkAcl:user-create')->only('create');
+        $this->middleware('checkAcl:user-edit')->only('edit');
+        $this->middleware('checkAcl:user-delete')->only('destroy');
+    }
+
     public function index()
     {
         $data = User::all();
